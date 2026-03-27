@@ -1,0 +1,40 @@
+{
+  "name": "fastboot-bun-ts",
+  "license": "MIT",
+  "type": "module",
+  "private": true,
+  "bin": {
+    "fastboot-bt": "./apps/fastboot/src/cli.ts"
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "module": "index.ts",
+  "exports": {
+    ".": "./index.ts",
+    "./fastboot": "./apps/fastboot/src/index.ts",
+    "./fastboot/cli": "./apps/fastboot/src/cli.ts",
+    "./usb": "./apps/usb/src/index.ts",
+    "./shared/*": "./packages/shared/src/*.ts",
+    "./contracts/*": "./packages/contracts/src/*.ts"
+  },
+  "scripts": {
+    "cli": "bun run apps/fastboot/src/cli.ts",
+    "lint": "biome lint .",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.4.9",
+    "@types/bun": "^1.3.11",
+    "@types/node": "^24.12.0",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "effect": "^3.21.0",
+    "usb": "^2.17.0"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  }
+}
